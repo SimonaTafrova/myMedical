@@ -12,25 +12,39 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="53dp" />
+        android:text="My Medical"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="61dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="166dp" />
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="167dp" />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:hint="Username"
         android:inputType="text"
-        android:text="Name"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         tools:layout_editor_absoluteX="94dp"
         tools:layout_editor_absoluteY="263dp" />
 
@@ -58,4 +72,5 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="558dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
