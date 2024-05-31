@@ -9,7 +9,7 @@
     android:background="@drawable/back1">
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editTextUsername"
         android:layout_width="337dp"
         android:layout_height="58dp"
         android:background="@drawable/input_bg"
@@ -24,32 +24,44 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="263dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginHeader"
+        app:layout_constraintVertical_bias="0.237" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/MyMedicalHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Medical"
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="61dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.084" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/LoginHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="167dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyMedicalHeader"
+        app:layout_constraintVertical_bias="0.034" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextPassword"
         android:layout_width="337dp"
         android:layout_height="58dp"
         android:background="@drawable/input_bg"
@@ -64,25 +76,35 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="336dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername"
+        app:layout_constraintVertical_bias="0.117" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/LoginButton"
         android:layout_width="210dp"
         android:layout_height="56dp"
         android:background="@drawable/btn_bg"
         android:text="Login"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="458dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintVertical_bias="0.376" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account yet? Sign up."
         android:textColor="@color/white"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="575dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginButton"
+        app:layout_constraintVertical_bias="0.209" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
