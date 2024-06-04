@@ -1,5 +1,6 @@
 package com.example.mymedical;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
         editUsername = findViewById(R.id.editTextUsername);
-        editPassword = findViewById(R.id.editTextPassword);
+        editPassword = findViewById(R.id.editTextConfirmPassword);
         btn = findViewById(R.id.LoginButton);
         tv = findViewById(R.id.textViewSignUp);
 
@@ -37,6 +38,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "All fields are required!", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
