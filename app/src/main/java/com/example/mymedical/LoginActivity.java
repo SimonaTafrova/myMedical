@@ -24,9 +24,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        editUsername = findViewById(R.id.editTextUsername);
+        editUsername = findViewById(R.id.editTextRegUsername);
         editPassword = findViewById(R.id.editTextConfirmPassword);
-        btn = findViewById(R.id.LoginButton);
+        btn = findViewById(R.id.RegisterButton);
         tv = findViewById(R.id.textViewSignUp);
 
         btn.setOnClickListener(new View.OnClickListener() {
