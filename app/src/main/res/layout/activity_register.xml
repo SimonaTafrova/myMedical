@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisterHeader"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.113" />
 
     <TextView
         android:id="@+id/MyMedicalHeader"
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Register"
+        android:text="Registrer"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,13 +102,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegPassword"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.151" />
 
     <Button
         android:id="@+id/RegisterButton"
         android:layout_width="210dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="104dp"
         android:background="@drawable/btn_bg"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,18 +116,18 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintVertical_bias="0.915" />
 
     <TextView
-        android:id="@+id/textViewAlreadyRegistered"
+        android:id="@+id/textViewExistingUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Already have an account? Click here!"
+        android:text="Already have an account? Log in here!"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterButton" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterButton"
+        app:layout_constraintVertical_bias="0.209" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
