@@ -25,8 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
         editUsername = findViewById(R.id.editTextUsername);
-        editPassword = findViewById(R.id.editTextConfirmPassword);
-        btn = findViewById(R.id.LoginButton);
+        editPassword = findViewById(R.id.editTextPassword);
+        btn = findViewById(R.id.LoginButtonn);
         tv = findViewById(R.id.textViewSignUp);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
