@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btn;
     TextView tv;
 
-    Database database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!isValidPassword(password)) {
                     Toast.makeText(getApplicationContext(), "Invalid password!", Toast.LENGTH_SHORT).show();
                 } else {
+                    Database database = new Database(getApplicationContext(),"myMedical", null, 1);
                     database.register(username,password);
                     Toast.makeText(getApplicationContext(), "Successful registration!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
