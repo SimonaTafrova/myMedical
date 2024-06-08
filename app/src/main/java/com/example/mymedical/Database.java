@@ -42,6 +42,7 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("select * from users where username=? and password=?",str);
 
+
         if(c.moveToFirst()){
             result = 1;
         }

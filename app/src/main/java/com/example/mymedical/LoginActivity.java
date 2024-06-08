@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editUsername, editPassword;
     Button btn;
     TextView tv;
-    Database database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
+                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
                 if(username.length() == 0 || password.length() == 0){
                     Toast.makeText(getApplicationContext(), "All fields are required!", Toast.LENGTH_SHORT).show();
                 } else {
