@@ -16,12 +16,24 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(username text, password text)");
+        db.execSQL("create table event(category text, date text, creator text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    public void createEvent(String category, String date, String creator){
+        ContentValues cv = new ContentValues();
+        cv.put("category", category);
+        cv.put("date", date);
+        cv.put("creator", creator);
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("events", null, cv);
+        db.close();
+    }
+
 
     public void register(String username, String password){
         ContentValues cv = new ContentValues();

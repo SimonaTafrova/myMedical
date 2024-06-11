@@ -36,6 +36,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        CardView cgm = findViewById(R.id.GCM);
+
+        cgm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent( HomeActivity.this, GSMSensorsActivity.class));
+            }
+        });
+
 
     }
 }
