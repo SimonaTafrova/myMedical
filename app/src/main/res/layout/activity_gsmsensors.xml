@@ -104,8 +104,8 @@
         android:text="0"
         android:textColor="@color/white"
         android:textSize="34sp"
-        app:layout_constraintTop_toBottomOf="@+id/quantityFreestyleHeader"
-        tools:layout_editor_absoluteX="291dp" />
+        app:layout_constraintStart_toEndOf="@+id/decreaseFreestyle"
+        app:layout_constraintTop_toBottomOf="@+id/quantityFreestyleHeader" />
 
     <ImageView
         android:id="@+id/increaseFreestyle"
@@ -123,10 +123,9 @@
         android:id="@+id/decreaseFreestyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/quantityFreestyle"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/quantityFreestyleHeader"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 

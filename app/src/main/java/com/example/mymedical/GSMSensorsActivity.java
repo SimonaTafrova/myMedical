@@ -33,6 +33,16 @@ public class GSMSensorsActivity extends AppCompatActivity {
         });
 
         increase = findViewById(R.id.increaseFreestyle);
+        decrease = findViewById(R.id.decreaseFreestyle);
+
+        decrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String curr = quantity.getText().toString();
+                String newQuantity = String.valueOf(Integer.parseInt(curr) -1);
+                quantity.setText(newQuantity);
+            }
+        });
 
         increase.setOnClickListener(new View.OnClickListener() {
             @Override
