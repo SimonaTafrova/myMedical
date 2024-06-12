@@ -13,8 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class GSMSensorsActivity extends AppCompatActivity {
-    ImageView backArrow, increase, decrease;
-    TextView quantity;
+    ImageView backArrow, increaseFreestyle, decreaseFreestyle, increaseDexcom, decreaseDexcom;
+    TextView quantityFreestyle, quantityDexcom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,12 @@ public class GSMSensorsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gsmsensors);
 
-        quantity = findViewById(R.id.quantityFreestyle);
-
+        quantityFreestyle = findViewById(R.id.quantityFreestyle);
+        quantityDexcom = findViewById(R.id.quantityDexcom);
+        increaseDexcom = findViewById(R.id.increaseDexcom);
+        decreaseDexcom = findViewById(R.id.decreaseDexcom);
+        increaseFreestyle = findViewById(R.id.increaseFreestyle);
+        decreaseFreestyle = findViewById(R.id.decreaseFreestyle);
         backArrow = findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,28 +36,48 @@ public class GSMSensorsActivity extends AppCompatActivity {
             }
         });
 
-        increase = findViewById(R.id.increaseFreestyle);
-        decrease = findViewById(R.id.decreaseFreestyle);
 
-        decrease.setOnClickListener(new View.OnClickListener() {
+
+        decreaseFreestyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String curr = quantity.getText().toString();
-                String newQuantity = String.valueOf(Integer.parseInt(curr) -1);
-                quantity.setText(newQuantity);
+                decrease(quantityFreestyle);
             }
         });
 
-        increase.setOnClickListener(new View.OnClickListener() {
+        increaseFreestyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String curr = quantity.getText().toString();
-                String newQuantity = String.valueOf(Integer.parseInt(curr) + 1);
-                quantity.setText(newQuantity);
+                increase(quantityFreestyle);
 
             }
         });
 
+        decreaseDexcom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                decrease(quantityDexcom);
+            }
+        });
 
+        increaseDexcom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                increase(quantityDexcom);
+            }
+        });
+
+
+    }
+
+    public void decrease (TextView quantity) {
+        String curr = quantity.getText().toString();
+        String newQuantity = String.valueOf(Integer.parseInt(curr) - 1);
+        quantity.setText(newQuantity);
+    }
+    public void increase (TextView quantity) {
+        String curr = quantity.getText().toString();
+        String newQuantity = String.valueOf(Integer.parseInt(curr) + 1);
+        quantity.setText(newQuantity);
     }
 }
