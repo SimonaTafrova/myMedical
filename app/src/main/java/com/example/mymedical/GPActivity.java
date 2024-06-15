@@ -14,10 +14,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GPActivity extends AppCompatActivity {
     ImageView back;
     EditText edDoctor, edTopic;
     Button button;
+
+    List<GPLog> allLogs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,9 @@ public class GPActivity extends AppCompatActivity {
     public void createNewLog(String doctor, String topic){
         if(doctor.length() == 0 || topic.length() == 0){
             Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
+        } else {
+            allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
+
         }
     }
 }
