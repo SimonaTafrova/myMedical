@@ -34,11 +34,14 @@ public class GPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gpactivity);
+        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
         edDoctor = findViewById(R.id.editTextDoctorName);
         edTopic = findViewById(R.id.editTextCallTopic);
         button = findViewById(R.id.createDoctorLogButton);
         tv = findViewById(R.id.history);
+
+        tv.setText(getHistory(database.getAllGPLogs()));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,20 +66,22 @@ public class GPActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
         } else {
             allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
-            tv.setText(getHistory(allLogs));
+            Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+            database.saveGPLog(doctor,topic,LocalDate.now().toString());
             edDoctor.setText("");
             edTopic.setText("");
+            startActivity(new Intent(GPActivity.this, GPActivity.class));
 
         }
     }
 
-    public String getHistory(List<GPLog> logs){
+    public String getHistory(List<String> logs){
         StringBuilder sb = new StringBuilder();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             logs
                     .forEach(l -> {
-                        sb.append(l.getDoctor() + " : " + l.getTopic() + " : " + l.getLocalDate().toString());
+                        sb.append(l);
                         sb.append(System.lineSeparator());
 
             });

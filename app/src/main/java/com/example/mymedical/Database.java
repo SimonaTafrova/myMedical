@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -17,6 +20,7 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(username text, password text)");
         db.execSQL("create table event(category text, date text, creator text)");
+        db.execSQL("create table gpLogs(doctor text, topic text, date text)");
     }
 
     @Override
@@ -58,6 +62,41 @@ public class Database extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             result = 1;
         }
+
+        return result;
+
+    }
+
+    public void saveGPLog(String doctor, String topic, String date){
+        ContentValues cv = new ContentValues();
+        cv.put("doctor", doctor);
+        cv.put("topic", topic);
+        cv.put("date", date);
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("gpLogs", null, cv);
+        db.close();
+    }
+
+
+    public List<String> getAllGPLogs(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select * from gpLogs", null);
+        List<String> result = new ArrayList<>();
+        int count = 0;
+
+        if (c.moveToLast()) {
+            do {
+                // on below line we are adding the data from
+                // cursor to our array list.
+                result.add(c.getString(0) + " : " +  c.getString(1) + " - " + c.getString(2));
+                count++;
+            } while (c.moveToPrevious() && count < 10);
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        c.close();
 
         return result;
 
