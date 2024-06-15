@@ -64,6 +64,8 @@ public class GPActivity extends AppCompatActivity {
         } else {
             allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
             tv.setText(getHistory(allLogs));
+            edDoctor.setText("");
+            edTopic.setText("");
 
         }
     }
