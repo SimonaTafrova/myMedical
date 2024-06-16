@@ -60,9 +60,13 @@ public class GPActivity extends AppCompatActivity {
         if(doctor.length() == 0 || topic.length() == 0){
             Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
         } else {
-            allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
+            }
             Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-            database.saveGPLog(doctor,topic,LocalDate.now().toString());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                database.saveGPLog(doctor,topic,LocalDate.now().toString());
+            }
             edDoctor.setText("");
             edTopic.setText("");
             startActivity(new Intent(GPActivity.this, GPActivity.class));
