@@ -22,7 +22,6 @@ public class GPActivity extends AppCompatActivity {
 
     TextView tv;
 
-    List<GPLog> allLogs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +59,6 @@ public class GPActivity extends AppCompatActivity {
         if(doctor.length() == 0 || topic.length() == 0){
             Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                allLogs.add(new GPLog(doctor,topic, LocalDate.now()));
-            }
             Database database = new Database(getApplicationContext(),"myMedical", null, 1);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 database.saveGPLog(doctor,topic,LocalDate.now().toString());
