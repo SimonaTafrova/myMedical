@@ -21,6 +21,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table users(username text, password text)");
         db.execSQL("create table event(category text, date text, creator text)");
         db.execSQL("create table gpLogs(doctor text, topic text, date text)");
+        db.execSQL("create table sensors(name text, quantity int)");
+        createSensors();
     }
 
     @Override
@@ -35,6 +37,20 @@ public class Database extends SQLiteOpenHelper {
         cv.put("creator", creator);
         SQLiteDatabase db = getWritableDatabase();
         db.insert("events", null, cv);
+        db.close();
+    }
+
+    public void createSensors(){
+        ContentValues cv1 = new ContentValues();
+        ContentValues cv2 = new ContentValues();
+        cv1.put("name", "Freestyle Libre");
+        cv1.put("quantity", 0);
+        cv2.put("name", "Dexcom");
+        cv2.put("quantity", 0);
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("sensors", null, cv1);
+        db.insert("sensors", null, cv2);
         db.close();
     }
 
