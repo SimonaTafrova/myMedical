@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -22,7 +24,12 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table event(category text, date text, creator text)");
         db.execSQL("create table gpLogs(doctor text, topic text, date text)");
         db.execSQL("create table sensors(name text, quantity int)");
-        createSensors();
+        ContentValues cv = new ContentValues();
+        cv.put("name", "Freestyle Libre");
+        cv.put("quantity", 0);
+        db.execSQL("insert into sensors (name, quantity) values ('FreestyleLibre', 0)");
+        db.execSQL("insert into sensors (name, quantity) values ('Dexcom', 0)");
+
     }
 
     @Override
@@ -108,6 +115,29 @@ public class Database extends SQLiteOpenHelper {
                 result.add(c.getString(0) + " : " +  c.getString(1) + " - " + c.getString(2));
                 count++;
             } while (c.moveToPrevious() && count < 10);
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        c.close();
+
+        return result;
+
+    }
+
+    public Map<String, Integer> getAllSensors(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select * from sensors", null);
+        Map<String, Integer> result = new HashMap<>();
+
+        if (c.moveToFirst()) {
+            do {
+                // on below line we are adding the data from
+                // cursor to our array list.
+
+                result.put(c.getString(0), Integer.parseInt(c.getString(1)));
+
+            } while (c.moveToNext());
             // moving our cursor to next.
         }
         // at last closing our cursor
