@@ -1,6 +1,7 @@
 package com.example.mymedical;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,15 +13,31 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Map;
+
 public class GSMSensorsActivity extends AppCompatActivity {
     ImageView backArrow, increaseFreestyle, decreaseFreestyle, increaseDexcom, decreaseDexcom;
-    TextView quantityFreestyle, quantityDexcom;
+    TextView quantityFreestyle, quantityDexcom, tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gsmsensors);
+        tv = findViewById(R.id.textView);
+
+        StringBuilder res = new StringBuilder();
+        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+        Map<String,Integer> allsesors = database.getAllSensors();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            allsesors.forEach((k,v) -> {
+                res.append(k);
+                res.append(" ");
+                res.append(v.toString());
+            });
+        }
+
+        tv.setText(res.toString());
 
         quantityFreestyle = findViewById(R.id.quantityFreestyle);
         quantityDexcom = findViewById(R.id.quantityDexcom);
