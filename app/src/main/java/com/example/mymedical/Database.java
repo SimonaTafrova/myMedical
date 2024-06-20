@@ -147,4 +147,14 @@ public class Database extends SQLiteOpenHelper {
         return result;
 
     }
+
+    public void increase(String name, int currentValue) {
+        ContentValues cv = new ContentValues();
+        cv.put("quantity", currentValue + 1);
+        SQLiteDatabase db = getWritableDatabase();
+        db.update("sensors", cv, "name = ?", new String[]{"FreestyleLibre"});
+
+
+
+    }
 }

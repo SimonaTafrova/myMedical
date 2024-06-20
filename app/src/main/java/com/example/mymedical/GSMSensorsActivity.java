@@ -19,6 +19,7 @@ public class GSMSensorsActivity extends AppCompatActivity {
     ImageView backArrow, increaseFreestyle, decreaseFreestyle, increaseDexcom, decreaseDexcom;
     TextView quantityFreestyle, quantityDexcom, tv;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,8 @@ public class GSMSensorsActivity extends AppCompatActivity {
         increaseFreestyle = findViewById(R.id.increaseFreestyle);
         decreaseFreestyle = findViewById(R.id.decreaseFreestyle);
         backArrow = findViewById(R.id.backArrow);
-
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+
         Map<String,Integer> allsesors = database.getAllSensors();
         quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
         quantityDexcom.setText(allsesors.get("Dexcom").toString());
@@ -49,6 +50,7 @@ public class GSMSensorsActivity extends AppCompatActivity {
         decreaseFreestyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 decrease(quantityFreestyle);
             }
         });
@@ -56,7 +58,9 @@ public class GSMSensorsActivity extends AppCompatActivity {
         increaseFreestyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                increase(quantityFreestyle);
+                int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
+                database.increase("Freestyle Libre", currentValue);
+                quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
 
             }
         });
@@ -84,6 +88,7 @@ public class GSMSensorsActivity extends AppCompatActivity {
         quantity.setText(newQuantity);
     }
     public void increase (TextView quantity) {
+
         String curr = quantity.getText().toString();
         String newQuantity = String.valueOf(Integer.parseInt(curr) + 1);
         quantity.setText(newQuantity);
