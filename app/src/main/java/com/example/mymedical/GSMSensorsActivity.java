@@ -24,20 +24,6 @@ public class GSMSensorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gsmsensors);
-        tv = findViewById(R.id.textView);
-
-        StringBuilder res = new StringBuilder();
-        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-        Map<String,Integer> allsesors = database.getAllSensors();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            allsesors.forEach((k,v) -> {
-                res.append(k);
-                res.append(" ");
-                res.append(v.toString());
-            });
-        }
-
-        tv.setText(res.toString());
 
         quantityFreestyle = findViewById(R.id.quantityFreestyle);
         quantityDexcom = findViewById(R.id.quantityDexcom);
@@ -46,6 +32,11 @@ public class GSMSensorsActivity extends AppCompatActivity {
         increaseFreestyle = findViewById(R.id.increaseFreestyle);
         decreaseFreestyle = findViewById(R.id.decreaseFreestyle);
         backArrow = findViewById(R.id.backArrow);
+
+        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+        Map<String,Integer> allsesors = database.getAllSensors();
+        quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
+        quantityDexcom.setText(allsesors.get("Dexcom").toString());
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
