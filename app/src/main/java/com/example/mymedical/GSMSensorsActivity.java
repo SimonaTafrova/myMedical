@@ -1,7 +1,7 @@
 package com.example.mymedical;
 
 import android.content.Intent;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,15 +9,13 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 import java.util.Map;
 
 public class GSMSensorsActivity extends AppCompatActivity {
     ImageView backArrow, increaseFreestyle, decreaseFreestyle, increaseDexcom, decreaseDexcom;
-    TextView quantityFreestyle, quantityDexcom, tv;
+    TextView quantityFreestyle, quantityDexcom;
 
 
     @Override
@@ -38,65 +36,38 @@ public class GSMSensorsActivity extends AppCompatActivity {
         Map<String,Integer> allsesors = database.getAllSensors();
         quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
         quantityDexcom.setText(allsesors.get("Dexcom").toString());
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GSMSensorsActivity.this, HomeActivity.class));
-            }
+        backArrow.setOnClickListener(v -> startActivity(new Intent(GSMSensorsActivity.this, HomeActivity.class)));
+
+
+
+        decreaseFreestyle.setOnClickListener(v -> {
+
+            int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
+            database.decrease("FreestyleLibre", currentValue);
+            quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
         });
 
+        increaseFreestyle.setOnClickListener(v -> {
+            int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
+            database.increase("FreestyleLibre", currentValue);
+            quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
 
-
-        decreaseFreestyle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
-                database.decrease("FreestyleLibre", currentValue);
-                quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
-            }
         });
 
-        increaseFreestyle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
-                database.increase("FreestyleLibre", currentValue);
-                quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
-
-            }
+        decreaseDexcom.setOnClickListener(v -> {
+            int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
+            database.decrease("Dexcom", currentValue);
+            quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
         });
 
-        decreaseDexcom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
-                database.decrease("Dexcom", currentValue);
-                quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
-            }
-        });
-
-        increaseDexcom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
-                database.increase("Dexcom", currentValue);
-                quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
-            }
+        increaseDexcom.setOnClickListener(v -> {
+            int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
+            database.increase("Dexcom", currentValue);
+            quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
         });
 
 
     }
 
-    public void decrease (TextView quantity) {
-        String curr = quantity.getText().toString();
-        String newQuantity = String.valueOf(Integer.parseInt(curr) - 1);
-        quantity.setText(newQuantity);
-    }
-    public void increase (TextView quantity) {
 
-        String curr = quantity.getText().toString();
-        String newQuantity = String.valueOf(Integer.parseInt(curr) + 1);
-        quantity.setText(newQuantity);
-    }
 }
