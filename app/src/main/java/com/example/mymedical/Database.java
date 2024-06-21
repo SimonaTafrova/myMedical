@@ -160,7 +160,12 @@ public class Database extends SQLiteOpenHelper {
 
     public void decrease(String name, int currentValue) {
         ContentValues cv = new ContentValues();
-        cv.put("quantity", currentValue - 1);
+        if(currentValue - 1 < 0){
+            cv.put("quantity", 0);
+        } else {
+            cv.put("quantity", currentValue - 1);
+        }
+
         SQLiteDatabase db = getWritableDatabase();
         db.update("sensors", cv, "name = ?", new String[]{name});
 
