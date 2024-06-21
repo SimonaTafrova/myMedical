@@ -51,7 +51,9 @@ public class GSMSensorsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                decrease(quantityFreestyle);
+                int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
+                database.decrease("FreestyleLibre", currentValue);
+                quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
             }
         });
 
@@ -59,7 +61,7 @@ public class GSMSensorsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
-                database.increase("Freestyle Libre", currentValue);
+                database.increase("FreestyleLibre", currentValue);
                 quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
 
             }
@@ -68,14 +70,18 @@ public class GSMSensorsActivity extends AppCompatActivity {
         decreaseDexcom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                decrease(quantityDexcom);
+                int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
+                database.decrease("Dexcom", currentValue);
+                quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
             }
         });
 
         increaseDexcom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                increase(quantityDexcom);
+                int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
+                database.increase("Dexcom", currentValue);
+                quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
             }
         });
 

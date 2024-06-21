@@ -152,7 +152,17 @@ public class Database extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("quantity", currentValue + 1);
         SQLiteDatabase db = getWritableDatabase();
-        db.update("sensors", cv, "name = ?", new String[]{"FreestyleLibre"});
+        db.update("sensors", cv, "name = ?", new String[]{name});
+
+
+
+    }
+
+    public void decrease(String name, int currentValue) {
+        ContentValues cv = new ContentValues();
+        cv.put("quantity", currentValue - 1);
+        SQLiteDatabase db = getWritableDatabase();
+        db.update("sensors", cv, "name = ?", new String[]{name});
 
 
 
