@@ -10,8 +10,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -145,6 +147,33 @@ public class Database extends SQLiteOpenHelper {
         c.close();
 
         return result;
+
+    }
+
+    public Set<Event> getAllEvents(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select * from event", null);
+
+        Set<Event> allEvents = new HashSet<>();
+
+        if (c.moveToFirst()) {
+            do {
+                // on below line we are adding the data from
+                // cursor to our array list.
+
+                Event currentEvent = new Event(c.getString(0), c.getString(1), Integer.parseInt(c.getString(2)));
+                allEvents.add(currentEvent);
+
+            } while (c.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        c.close();
+
+        return allEvents;
+
+
 
     }
 

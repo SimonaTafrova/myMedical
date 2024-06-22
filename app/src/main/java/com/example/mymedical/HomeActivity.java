@@ -3,6 +3,8 @@ package com.example.mymedical;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -13,6 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Set;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,6 +50,18 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         CardView cgm = findViewById(R.id.GCM);
+        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+
+        Set<Event> allEvents = database.getAllEvents();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            allEvents.forEach(e -> {
+                if(e.getViewed() == 0){
+                    ce.setCardBackgroundColor(Color.parseColor("#CD8B8B"));
+                }
+            });
+        }
+
 
         cgm.setOnClickListener(new View.OnClickListener() {
             @Override
