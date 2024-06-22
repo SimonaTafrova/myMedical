@@ -21,7 +21,7 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table users(username text, password text)");
-        db.execSQL("create table event(category text, date text, creator text)");
+        db.execSQL("create table event(message text, date text, viewed int)");
         db.execSQL("create table gpLogs(doctor text, topic text, date text)");
         db.execSQL("create table sensors(name text, quantity int)");
         ContentValues cv = new ContentValues();
@@ -37,13 +37,13 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void createEvent(String category, String date, String creator){
+    public void createEvent(String message, String date){
         ContentValues cv = new ContentValues();
-        cv.put("category", category);
+        cv.put("message", message);
         cv.put("date", date);
-        cv.put("creator", creator);
+        cv.put("viewed", 0);
         SQLiteDatabase db = getWritableDatabase();
-        db.insert("events", null, cv);
+        db.insert("event", null, cv);
         db.close();
     }
 

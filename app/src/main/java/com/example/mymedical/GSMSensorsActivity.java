@@ -11,6 +11,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.time.LocalDate;
 import java.util.Map;
 
 public class GSMSensorsActivity extends AppCompatActivity {
@@ -44,6 +45,10 @@ public class GSMSensorsActivity extends AppCompatActivity {
 
             int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
             database.decrease("FreestyleLibre", currentValue);
+            int newValue = database.getAllSensors().get("FreestyleLibre");
+            if(newValue <=1){
+                database.createEvent("You need to order Freestyle Libre 3 sensors!", LocalDate.now().toString());
+            }
             quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
         });
 
@@ -57,6 +62,10 @@ public class GSMSensorsActivity extends AppCompatActivity {
         decreaseDexcom.setOnClickListener(v -> {
             int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
             database.decrease("Dexcom", currentValue);
+            int newValue = database.getAllSensors().get("Dexcom");
+            if(newValue <=1){
+                database.createEvent("You need to order Dexcome One sensors!", LocalDate.now().toString());
+            }
             quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
         });
 
