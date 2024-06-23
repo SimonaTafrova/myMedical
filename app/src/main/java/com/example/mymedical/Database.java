@@ -201,4 +201,29 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+    public void viewAllEvents(){
+        SQLiteDatabase dbRead = getReadableDatabase();
+        Cursor c = dbRead.rawQuery("select * from event", null);
+        SQLiteDatabase dbWrite = getWritableDatabase();
+
+        if (c.moveToFirst()) {
+            do {
+                String message = c.getString(0);
+                String date = c.getString(1);
+                ContentValues cv = new ContentValues();
+                cv.put("date", date);
+                cv.put("viewed", 1);
+                dbWrite.update("event", cv, "message = ?", new String[]{message});
+                // on below line we are adding the data from
+                // cursor to our array list.
+
+            } while (c.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        c.close();
+
+    }
 }
