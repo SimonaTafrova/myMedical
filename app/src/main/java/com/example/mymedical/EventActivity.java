@@ -2,6 +2,7 @@ package com.example.mymedical;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -52,11 +53,13 @@ public class EventActivity extends AppCompatActivity {
         messageHeader.setText("Message");
         messageHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
         messageHeader.setTextSize(24);
+        messageHeader.setTypeface(Typeface.DEFAULT_BOLD);
         tableRow.addView(messageHeader);
         TextView dateHeader = new TextView(this);
         dateHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
         dateHeader.setTextSize(24);
         dateHeader.setText("Date");
+        dateHeader.setTypeface(Typeface.DEFAULT_BOLD);
         tableRow.addView(dateHeader);
         table.addView(tableRow);
 
