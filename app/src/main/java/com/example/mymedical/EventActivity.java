@@ -64,11 +64,11 @@ public class EventActivity extends AppCompatActivity {
             events.forEach(e -> {
                 TableRow newRow = new TableRow(this);
                 TextView message = new TextView(this);
-
+                message.setTextColor(Color.parseColor("#FFFFFFFF"));
                 message.setText(e.getMessage());
                 TextView date = new TextView(this);
                 date.setText(e.getDate());
-
+                date.setTextColor(Color.parseColor("#FFFFFFFF"));
                 newRow.addView(message);
                 newRow.addView(date);
                 table.addView(newRow);
