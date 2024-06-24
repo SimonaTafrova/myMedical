@@ -1,15 +1,22 @@
 package com.example.mymedical;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Set;
 
 public class EventActivity extends AppCompatActivity {
     ImageView backBtn;
@@ -23,6 +30,8 @@ public class EventActivity extends AppCompatActivity {
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
         database.viewAllEvents();
 
+        initTable(database.getAllEvents());
+
         backBtn = findViewById(R.id.backArrowEvent);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +42,38 @@ public class EventActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    public void initTable(Set<Event> events){
+        TableLayout table = findViewById(R.id.eventTable);
+        TableRow tableRow = new TableRow(this);
+        TextView messageHeader = new TextView(this);
+        messageHeader.setText("Message");
+        messageHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
+        messageHeader.setTextSize(24);
+        tableRow.addView(messageHeader);
+        TextView dateHeader = new TextView(this);
+        dateHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
+        dateHeader.setTextSize(24);
+        dateHeader.setText("Date");
+        tableRow.addView(dateHeader);
+        table.addView(tableRow);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            events.forEach(e -> {
+                TableRow newRow = new TableRow(this);
+                TextView message = new TextView(this);
+
+                message.setText(e.getMessage());
+                TextView date = new TextView(this);
+                date.setText(e.getDate());
+
+                newRow.addView(message);
+                newRow.addView(date);
+                table.addView(newRow);
+            });
+        }
 
     }
 }
