@@ -46,9 +46,7 @@ public class GSMSensorsActivity extends AppCompatActivity {
             int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
             database.decrease("FreestyleLibre", currentValue);
             int newValue = database.getAllSensors().get("FreestyleLibre");
-            if(newValue <=1){
-                database.createEvent("You need to order Freestyle Libre 3 sensors!", LocalDate.now().toString());
-            }
+
             quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
         });
 

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -150,11 +151,11 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public Set<Event> getAllEvents(){
+    public List<Event> getAllEvents(){
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("select * from event", null);
 
-        Set<Event> allEvents = new HashSet<>();
+        List<Event> allEvents = new ArrayList<>();
 
         if (c.moveToFirst()) {
             do {
@@ -198,6 +199,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.update("sensors", cv, "name = ?", new String[]{name});
 
+        if(currentValue - 1 <=1){
+            createEvent("You need to order " + name + " sensors!", LocalDate.now().toString());
+        }
+
 
 
     }
@@ -227,11 +232,11 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public Set<Event> getLast10Events(){
+    public List<Event> getLast10Events(){
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("select * from event", null);
 
-        Set<Event> allEvents = new HashSet<>();
+        List<Event> allEvents = new ArrayList<>();
         int count = 0;
 
         if (c.moveToLast()) {
@@ -249,6 +254,22 @@ public class Database extends SQLiteOpenHelper {
         c.close();
 
         return allEvents;
+
+    }
+
+    public int getSensorQuantity(String name){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] str = new String[1];
+        str[0] = name;
+        Cursor c = db.rawQuery("select * from sensors where name=?",str);
+        c.moveToFirst();
+        int quantity = Integer.parseInt(c.getString(1));
+        c.close();
+
+        return quantity;
+
+
+
 
     }
 }

@@ -17,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
 import java.util.Set;
 
 public class EventActivity extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class EventActivity extends AppCompatActivity {
 
     }
 
-    public void initTable(Set<Event> events){
+    public void initTable(List<Event> events){
         TableLayout table = findViewById(R.id.eventTable);
         TableRow tableRow = new TableRow(this);
         TextView messageHeader = new TextView(this);

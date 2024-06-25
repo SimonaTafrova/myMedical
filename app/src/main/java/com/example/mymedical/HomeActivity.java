@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
 import java.util.Set;
 
 public class HomeActivity extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         CardView cgm = findViewById(R.id.GCM);
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
-        Set<Event> allEvents = database.getAllEvents();
+        List<Event> allEvents = database.getAllEvents();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             allEvents.forEach(e -> {
@@ -75,6 +76,20 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, GPActivity.class));
+            }
+        });
+
+        CardView startLibre = findViewById(R.id.LibreStart);
+
+        startLibre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+                int quantity = database.getSensorQuantity("FreestyleLibre");
+                database.decrease("FreestyleLibre", quantity);
+                startLibre.setCardBackgroundColor(Color.parseColor("#CD8B8B"));
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+
             }
         });
 
