@@ -54,6 +54,7 @@ public class EventActivity extends AppCompatActivity {
         messageHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
         messageHeader.setTextSize(24);
         messageHeader.setTypeface(Typeface.DEFAULT_BOLD);
+        messageHeader.setPadding(30,10,10,10);
         tableRow.addView(messageHeader);
         TextView dateHeader = new TextView(this);
         dateHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
@@ -69,6 +70,7 @@ public class EventActivity extends AppCompatActivity {
                 TextView message = new TextView(this);
                 message.setTextColor(Color.parseColor("#FFFFFFFF"));
                 message.setText(e.getMessage());
+                message.setPadding(30,10,50,10);
                 TextView date = new TextView(this);
                 date.setText(e.getDate());
                 date.setTextColor(Color.parseColor("#FFFFFFFF"));
