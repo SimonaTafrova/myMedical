@@ -31,7 +31,7 @@ public class EventActivity extends AppCompatActivity {
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
         database.viewAllEvents();
 
-        initTable(database.getAllEvents());
+        initTable(database.getLast10Events());
 
         backBtn = findViewById(R.id.backArrowEvent);
 
@@ -63,6 +63,7 @@ public class EventActivity extends AppCompatActivity {
         dateHeader.setTypeface(Typeface.DEFAULT_BOLD);
         tableRow.addView(dateHeader);
         table.addView(tableRow);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             events.forEach(e -> {
