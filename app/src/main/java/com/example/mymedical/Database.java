@@ -226,4 +226,29 @@ public class Database extends SQLiteOpenHelper {
         c.close();
 
     }
+
+    public Set<Event> getLast10Events(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select * from event", null);
+
+        Set<Event> allEvents = new HashSet<>();
+        int count = 0;
+
+        if (c.moveToLast()) {
+            do {
+                // on below line we are adding the data from
+                // cursor to our array list.
+                Event currentEvent = new Event(c.getString(0), c.getString(1), Integer.parseInt(c.getString(2)));
+                allEvents.add(currentEvent);
+                count++;
+            } while (c.moveToPrevious() && count < 10);
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        c.close();
+
+        return allEvents;
+
+    }
 }
