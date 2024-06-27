@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -103,6 +104,16 @@ public class HomeActivity extends AppCompatActivity {
                 database.decrease("Dexcom", quantity);
                 startDexcom.setCardBackgroundColor(Color.parseColor("#CD8B8B"));
                 startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+            }
+        });
+
+        CardView logPerscription = findViewById(R.id.cardPerscriptionLog);
+
+        logPerscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+                database.createEvent("Collected a new perscription", LocalDate.now().toString());
             }
         });
 
