@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
                 Database database = new Database(getApplicationContext(),"myMedical", null, 1);
                 int quantity = database.getSensorQuantity("FreestyleLibre");
                 database.decrease("FreestyleLibre", quantity);
-                startLibre.setCardBackgroundColor(Color.parseColor("#CD8B8B"));
+                startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
                 startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
             }
@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                 Database database = new Database(getApplicationContext(),"myMedical", null, 1);
                 int quantity = database.getSensorQuantity("Dexcom");
                 database.decrease("Dexcom", quantity);
-                startDexcom.setCardBackgroundColor(Color.parseColor("#CD8B8B"));
+                startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
                 startActivity(new Intent(HomeActivity.this, HomeActivity.class));
             }
         });
@@ -114,6 +114,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Database database = new Database(getApplicationContext(),"myMedical", null, 1);
                 database.createEvent("Collected a new perscription", LocalDate.now().toString());
+                logPerscription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
             }
         });
 
