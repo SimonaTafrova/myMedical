@@ -9,9 +9,10 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/editTextRegUsername2"
+        android:id="@+id/editTextRegUsername"
         android:layout_width="337dp"
         android:layout_height="58dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
@@ -24,17 +25,15 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterHeader"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterHeader" />
 
     <EditText
         android:id="@+id/editTextRegPassword"
         android:layout_width="337dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="260dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_security_24"
         android:drawablePadding="10dp"
@@ -47,16 +46,15 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRegFullname" />
 
     <EditText
-        android:id="@+id/editTextRegUsername"
+        android:id="@+id/editTextRegFullname"
         android:layout_width="337dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
@@ -69,11 +67,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegUsername2"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRegUsername" />
 
     <TextView
         android:id="@+id/MyMedicalHeader"
@@ -95,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Registrer"
+        android:text="Register"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,6 +105,7 @@
         android:id="@+id/editTextConfirmPassword"
         android:layout_width="337dp"
         android:layout_height="58dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_baseline_security_24"
         android:drawablePadding="10dp"
@@ -121,25 +118,21 @@
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegPassword"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRegPassword" />
 
     <Button
         android:id="@+id/RegisterButton"
         android:layout_width="210dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/btn_bg"
         android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
 
     <TextView
         android:id="@+id/textViewExistingUser"
