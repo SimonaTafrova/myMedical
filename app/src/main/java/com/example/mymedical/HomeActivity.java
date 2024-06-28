@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -28,8 +29,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("username","").toString();
-        Toast.makeText(getApplicationContext(), "Welcome " + username, Toast.LENGTH_SHORT).show();
+        String fullname = sharedPreferences.getString("fullname","").toString();
+        TextView header = findViewById(R.id.titleHome);
+        header.setText(String.format("Hello,  %s !", fullname));
 
         CardView exit = findViewById(R.id.cardLogout);
         exit.setOnClickListener(new View.OnClickListener() {

@@ -23,7 +23,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users(username text, password text)");
+        db.execSQL("create table users(username text, password text, fullname text)");
         db.execSQL("create table event(message text, date text, viewed int)");
         db.execSQL("create table gpLogs(doctor text, topic text, date text)");
         db.execSQL("create table sensors(name text, quantity int)");
@@ -65,10 +65,11 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public void register(String username, String password){
+    public void register(String username, String password, String fullname){
         ContentValues cv = new ContentValues();
         cv.put("username", username);
         cv.put("password", password);
+        cv.put("fullname", fullname);
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert("users", null, cv);
@@ -83,6 +84,24 @@ public class Database extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("select * from users where username=? and password=?",str);
+
+
+        if(c.moveToFirst()){
+            result = 1;
+        }
+
+        return result;
+
+    }
+
+    public int isUniqueUsername (String username){
+        int result = 0;
+        String[] str = new String[1];
+        str[0] = username;
+
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("select * from users where username=?",str);
 
 
         if(c.moveToFirst()){
@@ -267,6 +286,22 @@ public class Database extends SQLiteOpenHelper {
         c.close();
 
         return quantity;
+
+
+
+
+    }
+
+    public String getFullName(String username){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] str = new String[1];
+        str[0] = username;
+        Cursor c = db.rawQuery("select * from users where username=?",str);
+        c.moveToFirst();
+        String fullName = c.getString(2);
+        c.close();
+
+        return fullName;
 
 
 
