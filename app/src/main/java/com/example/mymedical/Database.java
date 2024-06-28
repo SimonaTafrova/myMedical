@@ -291,4 +291,20 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+    public String getFullName(String username){
+        SQLiteDatabase db = getReadableDatabase();
+        String [] str = new String[1];
+        str[0] = username;
+        Cursor c = db.rawQuery("select * from users where username=?",str);
+        c.moveToFirst();
+        String fullName = c.getString(2);
+        c.close();
+
+        return fullName;
+
+
+
+
+    }
 }
