@@ -19,7 +19,14 @@ public class StatisticsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_statistics);
 
+        ImageView back = findViewById(R.id.backArrowStat);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StatisticsActivity.this, HomeActivity.class));
+            }
+        });
 
 
     }
