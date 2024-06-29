@@ -121,6 +121,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        CardView statistics = findViewById(R.id.cardMyProfile);
+
+        statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, StatisticsActivity.class));
+            }
+        });
+
 
     }
 }
