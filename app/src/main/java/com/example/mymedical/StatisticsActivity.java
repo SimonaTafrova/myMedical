@@ -18,7 +18,7 @@ import java.util.List;
 public class StatisticsActivity extends AppCompatActivity {
     int sensorsCount = 0;
     int perscriptionCount = 0;
-    TextView sensorView;
+    TextView sensorView, prescriptionView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
 
         sensorView = findViewById(R.id.SensorsCountTextView);
+        prescriptionView = findViewById(R.id.PerscriptionCountTextView);
 
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
@@ -48,6 +49,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
 
         sensorView.setText(String.valueOf(sensorsCount));
+        prescriptionView.setText(String.valueOf(perscriptionCount));
 
 
         // ImageView back = findViewById(R.id.backArrowStat);
