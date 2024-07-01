@@ -213,6 +213,7 @@ public class Database extends SQLiteOpenHelper {
             cv.put("quantity", 0);
         } else {
             cv.put("quantity", currentValue - 1);
+            createEvent("Started new sensor", LocalDate.now().toString());
         }
 
         SQLiteDatabase db = getWritableDatabase();
