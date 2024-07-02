@@ -18,7 +18,8 @@ import java.util.List;
 public class StatisticsActivity extends AppCompatActivity {
     int sensorsCount = 0;
     int perscriptionCount = 0;
-    TextView sensorView, prescriptionView;
+    int gpCallsCount = 0;
+    TextView sensorView, prescriptionView, doctorCallsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         sensorView = findViewById(R.id.SensorsCountTextView);
         prescriptionView = findViewById(R.id.PerscriptionCountTextView);
+        doctorCallsView = findViewById(R.id.GpCallCountTextView);
 
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
@@ -43,6 +45,8 @@ public class StatisticsActivity extends AppCompatActivity {
                             sensorsCount++;
                         } else if(e.getMessage().equals("Collected a new perscription")){
                             perscriptionCount++;
+                        } else if(e.getMessage().equals("A new doctor call recorded!")){
+                            gpCallsCount++;
                         };
                     });
         }
@@ -50,6 +54,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         sensorView.setText(String.valueOf(sensorsCount));
         prescriptionView.setText(String.valueOf(perscriptionCount));
+        doctorCallsView.setText(String.valueOf(gpCallsCount));
 
 
         // ImageView back = findViewById(R.id.backArrowStat);
