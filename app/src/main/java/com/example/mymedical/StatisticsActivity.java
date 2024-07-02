@@ -57,14 +57,14 @@ public class StatisticsActivity extends AppCompatActivity {
         doctorCallsView.setText(String.valueOf(gpCallsCount));
 
 
-        // ImageView back = findViewById(R.id.backArrowStat);
+         ImageView back = findViewById(R.id.backArrowStat);
 
-       // back.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-                //startActivity(new Intent(StatisticsActivity.this, HomeActivity.class));
-            //}
-       // });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StatisticsActivity.this, HomeActivity.class));
+            }
+        });
 
 
     }
