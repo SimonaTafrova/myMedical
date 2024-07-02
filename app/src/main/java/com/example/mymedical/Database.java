@@ -117,6 +117,7 @@ public class Database extends SQLiteOpenHelper {
         cv.put("doctor", doctor);
         cv.put("topic", topic);
         cv.put("date", date);
+        createEvent("A new doctor call recorded!", LocalDate.now().toString());
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert("gpLogs", null, cv);
