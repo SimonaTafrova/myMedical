@@ -1,11 +1,11 @@
 package com.example.mymedical;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -13,12 +13,8 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import java.util.List;
-import java.util.Set;
+
 
 public class EventActivity extends AppCompatActivity {
     ImageView backBtn;
@@ -36,17 +32,13 @@ public class EventActivity extends AppCompatActivity {
 
         backBtn = findViewById(R.id.backArrowEvent);
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EventActivity.this, HomeActivity.class));
-            }
-        });
+        backBtn.setOnClickListener(v -> startActivity(new Intent(EventActivity.this, HomeActivity.class)));
 
 
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void initTable(List<Event> events){
         TableLayout table = findViewById(R.id.eventTable);
         TableRow tableRow = new TableRow(this);
