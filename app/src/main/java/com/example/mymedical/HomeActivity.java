@@ -8,18 +8,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -70,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         cgm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent( HomeActivity.this, GSMSensorsActivity.class));
+                startActivity(new Intent( HomeActivity.this, CGMSensorsActivity.class));
             }
         });
 
