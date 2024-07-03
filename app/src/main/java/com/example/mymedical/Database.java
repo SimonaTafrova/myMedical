@@ -5,16 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -50,19 +50,6 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void createSensors(){
-        ContentValues cv1 = new ContentValues();
-        ContentValues cv2 = new ContentValues();
-        cv1.put("name", "Freestyle Libre");
-        cv1.put("quantity", 0);
-        cv2.put("name", "Dexcom");
-        cv2.put("quantity", 0);
-
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert("sensors", null, cv1);
-        db.insert("sensors", null, cv2);
-        db.close();
-    }
 
 
     public void register(String username, String password, String fullname){
@@ -117,7 +104,9 @@ public class Database extends SQLiteOpenHelper {
         cv.put("doctor", doctor);
         cv.put("topic", topic);
         cv.put("date", date);
-        createEvent("A new doctor call recorded!", LocalDate.now().toString());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createEvent("A new doctor call recorded!", LocalDate.now().toString());
+        }
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert("gpLogs", null, cv);
@@ -214,14 +203,18 @@ public class Database extends SQLiteOpenHelper {
             cv.put("quantity", 0);
         } else {
             cv.put("quantity", currentValue - 1);
-            createEvent("Started new sensor", LocalDate.now().toString());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createEvent("Started new sensor", LocalDate.now().toString());
+            }
         }
 
         SQLiteDatabase db = getWritableDatabase();
         db.update("sensors", cv, "name = ?", new String[]{name});
 
         if(currentValue - 1 <=1){
-            createEvent("You need to order " + name + " sensors!", LocalDate.now().toString());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createEvent("You need to order " + name + " sensors!", LocalDate.now().toString());
+            }
         }
 
 
