@@ -22,7 +22,7 @@
             android:name=".GPActivity"
             android:exported="false" />
         <activity
-            android:name=".GSMSensorsActivity"
+            android:name=".CGMSensorsActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

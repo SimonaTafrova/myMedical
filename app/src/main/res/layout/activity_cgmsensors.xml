@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back2"
-    tools:context=".GSMSensorsActivity">
+    tools:context=".CGMSensorsActivity">
 
     <TextView
         android:id="@+id/sensorsHeader"
@@ -173,15 +173,6 @@
         app:layout_constraintTop_toBottomOf="@+id/quantityDexcomHeader"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
