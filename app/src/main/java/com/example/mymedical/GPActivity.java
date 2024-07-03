@@ -3,7 +3,6 @@ package com.example.mymedical;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GPActivity extends AppCompatActivity {
@@ -37,26 +35,16 @@ public class GPActivity extends AppCompatActivity {
 
         tv.setText(getHistory(database.getAllGPLogs()));
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNewLog(edDoctor.getText().toString(),edTopic.getText().toString());
-            }
-        });
+        button.setOnClickListener(v -> createNewLog(edDoctor.getText().toString(),edTopic.getText().toString()));
 
         back = findViewById(R.id.backArrowGP);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GPActivity.this, HomeActivity.class));
-            }
-        });
+        back.setOnClickListener(v -> startActivity(new Intent(GPActivity.this, HomeActivity.class)));
 
 
     }
 
     public void createNewLog(String doctor, String topic){
-        if(doctor.length() == 0 || topic.length() == 0){
+        if(doctor.isEmpty() || topic.isEmpty()){
             Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
         } else {
             Database database = new Database(getApplicationContext(),"myMedical", null, 1);
