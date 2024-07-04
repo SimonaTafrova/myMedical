@@ -57,12 +57,14 @@ public class HomeActivity extends AppCompatActivity {
         CardView GPCalls = findViewById(R.id.cardGP);
         GPCalls.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, GPActivity.class)));
 
+
+
         CardView startLibre = findViewById(R.id.LibreStart);
 
         startLibre.setOnClickListener(v -> {
-            Database database1 = new Database(getApplicationContext(),"myMedical", null, 1);
-            int quantity = database1.getSensorQuantity("FreestyleLibre");
-            database1.decrease("FreestyleLibre", quantity);
+
+            int quantity = database.getSensorQuantity("FreestyleLibre");
+            database.decrease("FreestyleLibre", quantity);
             startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
             startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
@@ -71,9 +73,8 @@ public class HomeActivity extends AppCompatActivity {
         CardView startDexcom = findViewById(R.id.DexcomStart);
 
         startDexcom.setOnClickListener(v -> {
-            Database database12 = new Database(getApplicationContext(),"myMedical", null, 1);
-            int quantity = database12.getSensorQuantity("Dexcom");
-            database12.decrease("Dexcom", quantity);
+            int quantity = database.getSensorQuantity("Dexcom");
+            database.decrease("Dexcom", quantity);
             startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
             startActivity(new Intent(HomeActivity.this, HomeActivity.class));
         });
@@ -81,9 +82,9 @@ public class HomeActivity extends AppCompatActivity {
         CardView logPrescription = findViewById(R.id.cardPerscriptionLog);
 
         logPrescription.setOnClickListener(v -> {
-            Database database13 = new Database(getApplicationContext(),"myMedical", null, 1);
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                database13.createEvent("Collected a new prescription", LocalDate.now().toString());
+                database.createEvent("Collected a new prescription", LocalDate.now().toString());
             }
             logPrescription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
             startActivity(new Intent(HomeActivity.this, HomeActivity.class));
