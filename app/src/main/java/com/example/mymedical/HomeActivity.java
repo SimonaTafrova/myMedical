@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,29 +22,21 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-        String fullname = sharedPreferences.getString("fullname","").toString();
+        String fullName = sharedPreferences.getString("fullName","");
         TextView header = findViewById(R.id.titleHome);
-        header.setText(String.format("Hello,  %s !", fullname));
+        header.setText(String.format("Hello,  %s !", fullName));
 
         CardView exit = findViewById(R.id.cardLogout);
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
-                startActivity(new Intent( HomeActivity.this, LoginActivity.class));
-            }
+        exit.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            startActivity(new Intent( HomeActivity.this, LoginActivity.class));
         });
 
         CardView ce = findViewById(R.id.cardEvents);
 
-        ce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, EventActivity.class));
-            }
-        });
+        ce.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, EventActivity.class)));
 
         CardView cgm = findViewById(R.id.GCM);
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
@@ -61,68 +52,46 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
-        cgm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent( HomeActivity.this, CGMSensorsActivity.class));
-            }
-        });
+        cgm.setOnClickListener(v -> startActivity(new Intent( HomeActivity.this, CGMSensorsActivity.class)));
 
         CardView GPCalls = findViewById(R.id.cardGP);
-        GPCalls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, GPActivity.class));
-            }
-        });
+        GPCalls.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, GPActivity.class)));
 
         CardView startLibre = findViewById(R.id.LibreStart);
 
-        startLibre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-                int quantity = database.getSensorQuantity("FreestyleLibre");
-                database.decrease("FreestyleLibre", quantity);
-                startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+        startLibre.setOnClickListener(v -> {
+            Database database1 = new Database(getApplicationContext(),"myMedical", null, 1);
+            int quantity = database1.getSensorQuantity("FreestyleLibre");
+            database1.decrease("FreestyleLibre", quantity);
+            startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
-            }
         });
 
         CardView startDexcom = findViewById(R.id.DexcomStart);
 
-        startDexcom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-                int quantity = database.getSensorQuantity("Dexcom");
-                database.decrease("Dexcom", quantity);
-                startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-            }
+        startDexcom.setOnClickListener(v -> {
+            Database database12 = new Database(getApplicationContext(),"myMedical", null, 1);
+            int quantity = database12.getSensorQuantity("Dexcom");
+            database12.decrease("Dexcom", quantity);
+            startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
         });
 
-        CardView logPerscription = findViewById(R.id.cardPerscriptionLog);
+        CardView logPrescription = findViewById(R.id.cardPerscriptionLog);
 
-        logPerscription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-                database.createEvent("Collected a new perscription", LocalDate.now().toString());
-                logPerscription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+        logPrescription.setOnClickListener(v -> {
+            Database database13 = new Database(getApplicationContext(),"myMedical", null, 1);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                database13.createEvent("Collected a new prescription", LocalDate.now().toString());
             }
+            logPrescription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
         });
 
         CardView statistics = findViewById(R.id.cardMyProfile);
 
-        statistics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, StatisticsActivity.class));
-            }
-        });
+        statistics.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, StatisticsActivity.class)));
 
 
     }
