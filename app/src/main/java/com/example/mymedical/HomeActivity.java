@@ -22,24 +22,43 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-        String fullName = sharedPreferences.getString("fullName","");
-        TextView header = findViewById(R.id.titleHome);
-        header.setText(String.format("Hello,  %s !", fullName));
-
         CardView exit = findViewById(R.id.cardLogout);
-        exit.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
-            editor.apply();
-            startActivity(new Intent( HomeActivity.this, LoginActivity.class));
-        });
-
         CardView ce = findViewById(R.id.cardEvents);
+        CardView cgm = findViewById(R.id.GCM);
+        CardView GPCalls = findViewById(R.id.cardGP);
+        CardView logPrescription = findViewById(R.id.cardPerscriptionLog);
+        CardView statistics = findViewById(R.id.cardMyProfile);
+        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
+        setPrescriptionsCardView(logPrescription, database);
+        setHeaderGreeting(sharedPreferences);
+        setLogout(sharedPreferences, exit);
+        setEventsCardView(ce,database);
+        startSensors(database);
+
+        cgm.setOnClickListener(v -> startActivity(new Intent( HomeActivity.this, CGMSensorsActivity.class)));
+        GPCalls.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, GPActivity.class)));
+        statistics.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, StatisticsActivity.class)));
+
+
+    }
+
+    private void setPrescriptionsCardView(CardView logPrescription, Database database) {
+        logPrescription.setOnClickListener(v -> {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                database.createEvent("Collected a new prescription", LocalDate.now().toString());
+            }
+            logPrescription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+        });
+    }
+
+    private void setEventsCardView(CardView ce, Database database) {
         ce.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, EventActivity.class)));
 
-        CardView cgm = findViewById(R.id.GCM);
-        Database database = new Database(getApplicationContext(),"myMedical", null, 1);
+
+
 
         List<Event> allEvents = database.getAllEvents();
 
@@ -50,65 +69,44 @@ public class HomeActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
+    private void setLogout(SharedPreferences sharedPreferences, CardView exit) {
+        exit.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            startActivity(new Intent( HomeActivity.this, LoginActivity.class));
+        });
+    }
 
-        cgm.setOnClickListener(v -> startActivity(new Intent( HomeActivity.this, CGMSensorsActivity.class)));
+    private void setHeaderGreeting(SharedPreferences sharedPreferences) {
+        String fullName = sharedPreferences.getString("fullName","");
+        TextView header = findViewById(R.id.titleHome);
+        header.setText(String.format("Hello,  %s !", fullName));
+    }
 
-        CardView GPCalls = findViewById(R.id.cardGP);
-        GPCalls.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, GPActivity.class)));
-
-
-
+    private void startSensors(Database database) {
         CardView startLibre = findViewById(R.id.LibreStart);
-
-        int libreQuantity = database.getSensorQuantity("FreestyleLibre");
-        if(libreQuantity == 0){
-            startLibre.setClickable(false);
-            startLibre.setCardBackgroundColor(Color.parseColor("#DD706666"));
-        } else {
-            startLibre.setOnClickListener(v -> {
-
-                int quantity = database.getSensorQuantity("FreestyleLibre");
-                database.decrease("FreestyleLibre", quantity);
-                startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-
-            });}
-
-
-
         CardView startDexcom = findViewById(R.id.DexcomStart);
 
-        int dexcomQuantity = database.getSensorQuantity("Dexcom");
-        if(dexcomQuantity == 0){
-            startDexcom.setClickable(false);
-            startDexcom.setCardBackgroundColor(Color.parseColor("#DD706666"));
-        } else {
-            startDexcom.setOnClickListener(v -> {
+        setSensorsCardView(startLibre, "FreestyleLibre", database);
+        setSensorsCardView(startDexcom,"Dexcom", database);
 
-                int quantity = database.getSensorQuantity("Dexcom");
-                database.decrease("Dexcom", quantity);
-                startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+    }
+
+    private void setSensorsCardView(CardView cardView, String name, Database database) {
+
+        int quantity = database.getSensorQuantity(name);
+        if(quantity == 0){
+            cardView.setClickable(false);
+            cardView.setCardBackgroundColor(Color.parseColor("#DD706666"));
+        } else {
+            cardView.setOnClickListener(v -> {
+                database.decrease(name, quantity);
+                cardView.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
                 startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
             });}
-
-
-        CardView logPrescription = findViewById(R.id.cardPerscriptionLog);
-
-        logPrescription.setOnClickListener(v -> {
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                database.createEvent("Collected a new prescription", LocalDate.now().toString());
-            }
-            logPrescription.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-        });
-
-        CardView statistics = findViewById(R.id.cardMyProfile);
-
-        statistics.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, StatisticsActivity.class)));
-
-
     }
 }
