@@ -61,23 +61,38 @@ public class HomeActivity extends AppCompatActivity {
 
         CardView startLibre = findViewById(R.id.LibreStart);
 
-        startLibre.setOnClickListener(v -> {
+        int libreQuantity = database.getSensorQuantity("FreestyleLibre");
+        if(libreQuantity == 0){
+            startLibre.setClickable(false);
+            startLibre.setCardBackgroundColor(Color.parseColor("#DD706666"));
+        } else {
+            startLibre.setOnClickListener(v -> {
 
-            int quantity = database.getSensorQuantity("FreestyleLibre");
-            database.decrease("FreestyleLibre", quantity);
-            startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                int quantity = database.getSensorQuantity("FreestyleLibre");
+                database.decrease("FreestyleLibre", quantity);
+                startLibre.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 
-        });
+            });}
+
+
 
         CardView startDexcom = findViewById(R.id.DexcomStart);
 
-        startDexcom.setOnClickListener(v -> {
-            int quantity = database.getSensorQuantity("Dexcom");
-            database.decrease("Dexcom", quantity);
-            startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
-            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-        });
+        int dexcomQuantity = database.getSensorQuantity("Dexcom");
+        if(dexcomQuantity == 0){
+            startDexcom.setClickable(false);
+            startDexcom.setCardBackgroundColor(Color.parseColor("#DD706666"));
+        } else {
+            startDexcom.setOnClickListener(v -> {
+
+                int quantity = database.getSensorQuantity("Dexcom");
+                database.decrease("Dexcom", quantity);
+                startDexcom.setCardBackgroundColor(Color.parseColor("#8CCF8D"));
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+
+            });}
+
 
         CardView logPrescription = findViewById(R.id.cardPerscriptionLog);
 
