@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         String fullname = database.getFullName(username);
                         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("fullname", fullname);
+                        editor.putString("fullName", fullname);
 
                         editor.apply();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
