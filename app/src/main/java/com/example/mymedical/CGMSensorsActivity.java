@@ -36,46 +36,51 @@ public class CGMSensorsActivity extends AppCompatActivity {
         backArrow = findViewById(R.id.backArrow);
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
 
-        Map<String,Integer> allsesors = database.getAllSensors();
-        quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
-        quantityDexcom.setText(allsesors.get("Dexcom").toString());
+        setSensorsQuantity(database, quantityFreestyle, quantityDexcom);
+        setDecreaseButtons(decreaseFreestyle, decreaseDexcom, database);
+        setIncreaseButtons(increaseFreestyle, increaseDexcom, database);
+
+
         backArrow.setOnClickListener(v -> startActivity(new Intent(CGMSensorsActivity.this, HomeActivity.class)));
 
 
 
-        decreaseFreestyle.setOnClickListener(v -> {
+    }
 
-            int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
-            database.decrease("FreestyleLibre", currentValue);
+    private void setIncreaseButtons(ImageView increaseFreestyle, ImageView increaseDexcom, Database database) {
+        increaseFreestyle.setOnClickListener(v -> increase("FreestyleLibre", database, quantityFreestyle));
+        increaseDexcom.setOnClickListener(v -> increase("Dexcom", database, quantityDexcom));
+    }
 
-            quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
-        });
+    private void increase(String name, Database database, TextView quantity) {
+        int currentValue = Integer.parseInt(quantity.getText().toString());
+        database.increase(name, currentValue);
+        quantity.setText(database.getAllSensors().get(name).toString());
+    }
 
-        increaseFreestyle.setOnClickListener(v -> {
-            int currentValue = Integer.parseInt(quantityFreestyle.getText().toString());
-            database.increase("FreestyleLibre", currentValue);
-            quantityFreestyle.setText(database.getAllSensors().get("FreestyleLibre").toString());
+    private void setDecreaseButtons(ImageView decreaseFreestyle, ImageView decreaseDexcom, Database database) {
+        decreaseFreestyle.setOnClickListener(v -> decrease("FreestyleLibre", database, quantityFreestyle));
+        decreaseDexcom.setOnClickListener(c -> decrease("Dexcom", database, quantityDexcom));
 
-        });
+    }
 
-        decreaseDexcom.setOnClickListener(v -> {
-            int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
-            database.decrease("Dexcom", currentValue);
-            int newValue = database.getAllSensors().get("Dexcom");
-            if(newValue <=1){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    database.createEvent("You need to order Dexcome One sensors!", LocalDate.now().toString());
-                }
+    private void decrease(String name,  Database database, TextView quantity) {
+        int currentValue = Integer.parseInt(quantity.getText().toString());
+        database.decrease(name, currentValue);
+        int newValue = database.getAllSensors().get(name);
+        if(newValue <=1){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                database.createEvent("You need to order " + name + " sensors!", LocalDate.now().toString());
             }
-            quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
-        });
+        }
 
-        increaseDexcom.setOnClickListener(v -> {
-            int currentValue = Integer.parseInt(quantityDexcom.getText().toString());
-            database.increase("Dexcom", currentValue);
-            quantityDexcom.setText(database.getAllSensors().get("Dexcom").toString());
-        });
+        quantity.setText(database.getAllSensors().get(name).toString());
+    }
 
+    private void setSensorsQuantity(Database database, TextView quantityFreestyle, TextView quantityDexcom) {
+        Map<String,Integer> allsesors = database.getAllSensors();
+        quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
+        quantityDexcom.setText(allsesors.get("Dexcom").toString());
 
     }
 
