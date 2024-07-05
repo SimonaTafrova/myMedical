@@ -17,7 +17,6 @@ public class GPActivity extends AppCompatActivity {
     ImageView back;
     EditText edDoctor, edTopic;
     Button button;
-
     TextView tv;
 
 
@@ -31,13 +30,12 @@ public class GPActivity extends AppCompatActivity {
         edDoctor = findViewById(R.id.editTextDoctorName);
         edTopic = findViewById(R.id.editTextCallTopic);
         button = findViewById(R.id.createDoctorLogButton);
+        back = findViewById(R.id.backArrowGP);
         tv = findViewById(R.id.history);
 
         tv.setText(getHistory(database.getAllGPLogs()));
 
         button.setOnClickListener(v -> createNewLog(edDoctor.getText().toString(),edTopic.getText().toString()));
-
-        back = findViewById(R.id.backArrowGP);
         back.setOnClickListener(v -> startActivity(new Intent(GPActivity.this, HomeActivity.class)));
 
 
@@ -54,7 +52,6 @@ public class GPActivity extends AppCompatActivity {
             edDoctor.setText("");
             edTopic.setText("");
             startActivity(new Intent(GPActivity.this, GPActivity.class));
-
         }
     }
 

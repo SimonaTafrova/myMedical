@@ -211,14 +211,6 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.update("sensors", cv, "name = ?", new String[]{name});
 
-        if(currentValue - 1 <=1){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                createEvent("You need to order " + name + " sensors!", LocalDate.now().toString());
-            }
-        }
-
-
-
     }
 
     public void viewAllEvents(){
