@@ -1,17 +1,12 @@
 package com.example.mymedical;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -40,11 +35,7 @@ public class CGMSensorsActivity extends AppCompatActivity {
         setDecreaseButtons(decreaseFreestyle, decreaseDexcom, database);
         setIncreaseButtons(increaseFreestyle, increaseDexcom, database);
 
-
         backArrow.setOnClickListener(v -> startActivity(new Intent(CGMSensorsActivity.this, HomeActivity.class)));
-
-
-
     }
 
     private void setIncreaseButtons(ImageView increaseFreestyle, ImageView increaseDexcom, Database database) {
@@ -83,6 +74,4 @@ public class CGMSensorsActivity extends AppCompatActivity {
         quantityDexcom.setText(allsesors.get("Dexcom").toString());
 
     }
-
-
 }

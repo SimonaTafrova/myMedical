@@ -24,17 +24,13 @@ public class EventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_event);
-
+        backBtn = findViewById(R.id.backArrowEvent);
         Database database = new Database(getApplicationContext(),"myMedical", null, 1);
-        database.viewAllEvents();
 
+        database.viewAllEvents();
         initTable(database.getLast10Events());
 
-        backBtn = findViewById(R.id.backArrowEvent);
-
         backBtn.setOnClickListener(v -> startActivity(new Intent(EventActivity.this, HomeActivity.class)));
-
-
 
     }
 
