@@ -1,21 +1,15 @@
 package com.example.mymedical;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText edUsername, edPassword, edConfirmPassword, edFullname;
+    EditText edUsername, edPassword, edConfirmPassword, edFullName;
     Button btn;
     TextView tv;
 
@@ -29,29 +23,19 @@ public class RegisterActivity extends AppCompatActivity {
         edUsername = findViewById(R.id .editTextRegUsername);
         edPassword = findViewById(R.id.editTextRegPassword);
         edConfirmPassword = findViewById(R.id.editTextConfirmPassword);
-        edFullname = findViewById(R.id.editTextRegFullname);
+        edFullName = findViewById(R.id.editTextRegFullname);
         btn = findViewById(R.id.RegisterButton);
         tv = findViewById(R.id.textViewExistingUser);
 
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            }
-        });
+        tv.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)));
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerUser(edUsername.getText().toString(), edPassword.getText().toString(), edConfirmPassword.getText().toString(), edFullname.getText().toString());
-            }
-        });
+        btn.setOnClickListener(v -> registerUser(edUsername.getText().toString(), edPassword.getText().toString(), edConfirmPassword.getText().toString(), edFullName.getText().toString()));
 
     }
 
-    private void registerUser(String username, String password, String confirmPassword, String fullname) {
+    private void registerUser(String username, String password, String confirmPassword, String fullName) {
 
-        if (username.length() == 0 || password.length() == 0 || confirmPassword.length() == 0) {
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields are required!", Toast.LENGTH_SHORT).show();
         } else {
             if (!password.equals(confirmPassword)) {
@@ -64,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(database.isUniqueUsername(username) == 1){
                         Toast.makeText(getApplicationContext(), "User with this username already exists!", Toast.LENGTH_SHORT).show();
                     } else {
-                        database.register(username, password, fullname);
+                        database.register(username, password, fullName);
                         Toast.makeText(getApplicationContext(), "Successful registration!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     }
@@ -91,9 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-        if( f1==1 && f2==1){
-            return true;
-        }
-        return false;
+        return f1 == 1 && f2 == 1;
     }
 }
