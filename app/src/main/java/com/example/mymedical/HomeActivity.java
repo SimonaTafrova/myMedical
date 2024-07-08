@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.mymedical.enums.SensorsEnum;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -90,8 +92,8 @@ public class HomeActivity extends AppCompatActivity {
         CardView startLibre = findViewById(R.id.LibreStart);
         CardView startDexcom = findViewById(R.id.DexcomStart);
 
-        setSensorsCardView(startLibre, "FreestyleLibre", database);
-        setSensorsCardView(startDexcom,"Dexcom", database);
+        setSensorsCardView(startLibre, SensorsEnum.FREESTYLE_LIBRE.getName(), database);
+        setSensorsCardView(startDexcom, SensorsEnum.DEXCOM.getName(), database);
 
     }
 

@@ -7,6 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mymedical.enums.SensorsEnum;
+
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -39,8 +42,8 @@ public class CGMSensorsActivity extends AppCompatActivity {
     }
 
     private void setIncreaseButtons(ImageView increaseFreestyle, ImageView increaseDexcom, Database database) {
-        increaseFreestyle.setOnClickListener(v -> increase("FreestyleLibre", database, quantityFreestyle));
-        increaseDexcom.setOnClickListener(v -> increase("Dexcom", database, quantityDexcom));
+        increaseFreestyle.setOnClickListener(v -> increase(SensorsEnum.FREESTYLE_LIBRE.getName(), database, quantityFreestyle));
+        increaseDexcom.setOnClickListener(v -> increase(SensorsEnum.DEXCOM.getName(), database, quantityDexcom));
     }
 
     private void increase(String name, Database database, TextView quantity) {
@@ -50,8 +53,8 @@ public class CGMSensorsActivity extends AppCompatActivity {
     }
 
     private void setDecreaseButtons(ImageView decreaseFreestyle, ImageView decreaseDexcom, Database database) {
-        decreaseFreestyle.setOnClickListener(v -> decrease("FreestyleLibre", database, quantityFreestyle));
-        decreaseDexcom.setOnClickListener(c -> decrease("Dexcom", database, quantityDexcom));
+        decreaseFreestyle.setOnClickListener(v -> decrease(SensorsEnum.FREESTYLE_LIBRE.getName(), database, quantityFreestyle));
+        decreaseDexcom.setOnClickListener(c -> decrease(SensorsEnum.DEXCOM.getName(), database, quantityDexcom));
 
     }
 
@@ -70,8 +73,8 @@ public class CGMSensorsActivity extends AppCompatActivity {
 
     private void setSensorsQuantity(Database database, TextView quantityFreestyle, TextView quantityDexcom) {
         Map<String,Integer> allsesors = database.getAllSensors();
-        quantityFreestyle.setText(allsesors.get("FreestyleLibre").toString());
-        quantityDexcom.setText(allsesors.get("Dexcom").toString());
+        quantityFreestyle.setText(allsesors.get(SensorsEnum.FREESTYLE_LIBRE.getName()).toString());
+        quantityDexcom.setText(allsesors.get(SensorsEnum.DEXCOM.getName()).toString());
 
     }
 }
