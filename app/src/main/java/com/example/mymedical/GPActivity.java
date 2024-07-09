@@ -87,6 +87,7 @@ public class GPActivity extends AppCompatActivity {
         TextView topicHeader = new TextView(this);
         topicHeader.setTextColor(Color.parseColor("#FFFFFFFF"));
         topicHeader.setTextSize(24);
+        topicHeader.setTypeface(Typeface.DEFAULT_BOLD);
         topicHeader.setText("Topic");
         tableRow.addView(topicHeader);
         TextView dateHeader = new TextView(this);
@@ -97,5 +98,26 @@ public class GPActivity extends AppCompatActivity {
 
         tableRow.addView(dateHeader);
         table.addView(tableRow);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            logs.forEach(l -> {
+                TableRow newRow = new TableRow(this);
+                TextView doctor = new TextView(this);
+                doctor.setTextColor(Color.parseColor("#FFFFFFFF"));
+                doctor.setText(l.getDoctor());
+                doctor.setPadding(30,10,50,10);
+                TextView topic = new TextView(this);
+                topic.setTextColor(Color.parseColor("#FFFFFFFF"));
+                topic.setPadding(30,10,50,10);
+                topic.setText(l.getTopic());
+                TextView date = new TextView(this);
+                date.setText(l.getDate());
+                date.setTextColor(Color.parseColor("#FFFFFFFF"));
+                newRow.addView(doctor);
+                newRow.addView(topic);
+                newRow.addView(date);
+                table.addView(newRow);
+            });
+        }
     }
     }
