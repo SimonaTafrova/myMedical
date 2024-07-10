@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">myMedical</string>
+    <string name="cgm_sensors">CGM Sensors</string>
+    <string name="freestyle_libre_3">Freestyle Libre 3</string>
+    <string name="dexcom_one">Dexcom One</string>
+    <string name="quantity">Quantity</string>
 </resources>
