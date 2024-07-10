@@ -1,5 +1,6 @@
 package com.example.mymedical;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -21,8 +22,6 @@ public class GPActivity extends AppCompatActivity {
     ImageView back;
     EditText edDoctor, edTopic;
     Button button;
-    TextView tv;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +58,9 @@ public class GPActivity extends AppCompatActivity {
         }
     }
 
-    public String getHistory(List<String> logs){
-        StringBuilder sb = new StringBuilder();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            logs
-                    .forEach(l -> {
-                        sb.append(l);
-                        sb.append(System.lineSeparator());
 
-            });
-        }
-
-        return  sb.toString();
-    }
-
+    @SuppressLint("SetTextI18n")
     public void initTable(List<GPLog> logs) {
         TableLayout table = findViewById(R.id.gpTable);
         TableRow tableRow = new TableRow(this);
