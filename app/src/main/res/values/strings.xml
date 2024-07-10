@@ -4,4 +4,6 @@
     <string name="freestyle_libre_3">Freestyle Libre 3</string>
     <string name="dexcom_one">Dexcom One</string>
     <string name="quantity">Quantity</string>
+    <string name="_10_most_recent_events">10 Most Recent Events</string>
+    <string name="back">back</string>
 </resources>
