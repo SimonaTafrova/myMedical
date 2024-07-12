@@ -11,11 +11,11 @@
     <EditText
         android:id="@+id/editTextDoctorName"
         android:layout_width="344dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Doctor's name"
+        android:hint="@string/doctor_s_name"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="#F8F6F6"
@@ -24,15 +24,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGPLogCreateHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewGPLogCreateHeader"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/createDoctorLogButton"
         android:layout_width="143dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/input_bg"
-        android:text="Create"
+        android:text="@string/create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCallTopic" />
@@ -40,11 +41,11 @@
     <EditText
         android:id="@+id/editTextCallTopic"
         android:layout_width="344dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Topic of the call"
+        android:hint="@string/topic_of_the_call"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -53,14 +54,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDoctorName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDoctorName"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textViewGPLogCreateHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Create a new GP call log"
+        android:text="@string/create_a_new_gp_call_log"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
