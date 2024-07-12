@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="12dp"
-        android:text="MyMedical"
+        android:text="@string/mymedical"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -46,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="STATISTICS"
+                    android:text="@string/statistics"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -82,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LOGOUT"
+                    android:text="@string/logout"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -120,7 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +131,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GP CALLS"
+                    android:text="@string/gp_calls"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -156,7 +159,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,7 +168,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EVENTS"
+                    android:text="@string/events"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -200,14 +204,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LOG A NEW"
+                    android:text="@string/log_a_new"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PERSCRIPTIONS"
+                    android:text="@string/perscriptions"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -235,7 +239,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -243,7 +248,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GCM SENSORS"
+                    android:text="@string/gcm_sensors"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -271,7 +276,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -280,7 +286,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  START LIBRE SENSOR    "
+                    android:text="@string/start_libre_sensor"
 
                     android:textAlignment="center"
                     android:textColor="@color/black"
@@ -310,7 +316,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -318,7 +325,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="START DEXCOM SENSOR"
+                    android:text="@string/start_dexcom_sensor"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>

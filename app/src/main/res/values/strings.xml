@@ -10,4 +10,14 @@
     <string name="topic_of_the_call">Topic of the call</string>
     <string name="create_a_new_gp_call_log">Create a new GP call log</string>
     <string name="doctor_s_name">Doctor\'s name</string>
+    <string name="mymedical">MyMedical</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="logout">LOGOUT</string>
+    <string name="gp_calls">GP CALLS</string>
+    <string name="events">EVENTS</string>
+    <string name="log_a_new">LOG A NEW</string>
+    <string name="perscriptions">PRESCRIPTIONS</string>
+    <string name="gcm_sensors">GCM SENSORS</string>
+    <string name="start_libre_sensor">START LIBRE SENSOR</string>
+    <string name="start_dexcom_sensor">START DEXCOM SENSOR</string>
 </resources>
