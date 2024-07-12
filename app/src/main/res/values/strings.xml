@@ -20,4 +20,9 @@
     <string name="gcm_sensors">GCM SENSORS</string>
     <string name="start_libre_sensor">START LIBRE SENSOR</string>
     <string name="start_dexcom_sensor">START DEXCOM SENSOR</string>
+    <string name="username">Username</string>
+    <string name="my_medical">My Medical</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_account_yet_sign_up_now">Don\'t have an account yet? Sign up now!</string>
 </resources>
