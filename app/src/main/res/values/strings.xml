@@ -6,4 +6,8 @@
     <string name="quantity">Quantity</string>
     <string name="_10_most_recent_events">10 Most Recent Events</string>
     <string name="back">back</string>
+    <string name="create">Create</string>
+    <string name="topic_of_the_call">Topic of the call</string>
+    <string name="create_a_new_gp_call_log">Create a new GP call log</string>
+    <string name="doctor_s_name">Doctor\'s name</string>
 </resources>
