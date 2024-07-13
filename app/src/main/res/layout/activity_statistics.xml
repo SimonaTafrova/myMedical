@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="12dp"
-        android:text="MyMedical"
+        android:text="@string/my_medical"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -52,15 +52,15 @@
                     android:id="@+id/PerscriptionCountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="40dp"/>
+                    android:textSize="40sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PERSCRIPTIONS COLLECTED"
+                    android:text="@string/perscriptions_collected"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -93,15 +93,15 @@
                     android:id="@+id/SensorsCountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="40dp"/>
+                    android:textSize="40sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CGM SENSORS STARTED"
+                    android:text="@string/cgm_sensors_started"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -135,16 +135,16 @@
                     android:id="@+id/GpCallCountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="40dp"
+                    android:textSize="40sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GP CALLS RECORDED"
+                    android:text="@string/gp_calls_recorded"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -172,6 +172,7 @@
                 android:layout_height="72dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="24dp"
+                android:contentDescription="@string/back"
 
                 android:elevation="0dp"
                 app:srcCompat="@android:drawable/ic_menu_revert" />
