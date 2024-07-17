@@ -33,4 +33,6 @@
     <string name="perscriptions_collected">PERSCRIPTIONS COLLECTED</string>
     <string name="cgm_sensors_started">CGM SENSORS STARTED</string>
     <string name="gp_calls_recorded">GP CALLS RECORDED</string>
+    <string name="freestyle_libre_logo">freestyle libre logo</string>
+    <string name="dexcom_logo">dexcom logo</string>
 </resources>
