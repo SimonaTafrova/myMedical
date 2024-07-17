@@ -49,11 +49,11 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRegFullname"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRegFullName"
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/editTextRegFullname"
+        android:id="@+id/editTextRegFullName"
         android:layout_width="337dp"
         android:layout_height="58dp"
         android:layout_marginTop="20dp"
